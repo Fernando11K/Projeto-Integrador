@@ -19,13 +19,13 @@
         </q-toolbar-title>
 
 
-        <q-tabs inline-label class="desktop-only ">
-          <q-route-tab class="text-orange-5   " icon="fa-solid fa-user" to="/page2" label="ENTRAR" />
+        <q-tabs inline-label class="desktop-only col-md-5 col-xs-12 ">
+          <q-route-tab class="text-orange-5  " icon="fa-solid fa-user" to="/login" label="ENTRAR" />
           <q-route-tab class="text-orange-5 " icon="fa-solid fa-bag-shopping" to="/page3" label="SACOLA" />
-          <q-route-tab class="text-orange-5   " icon="fa-solid fa-solid fa-heart" to="/page1" label="FAVORITOS" />
+          <q-route-tab class="text-orange-5  " icon="fa-solid fa-solid fa-heart" to="/page1" label="FAVORITOS" />
         </q-tabs>
 
-        <q-btn class="mobile-only fixed-top-left q-my-sm  " dense flat round icon="menu"
+        <q-btn class="mobile-only fixed-top-left q-my-sm  q-ml-sm " dense flat round icon="menu"
           @click="this.toggleLeftDrawer()" />
 
 
@@ -50,11 +50,11 @@
       <q-list bordered class=" q-pa-none    ">
 
         <template v-for="(menuItemPersonal, index) in menuListPersonal" :key="index">
-          <q-item clickable v-ripple class="glossy text-white   ">
+          <q-item clickable v-ripple class="glossy text-white " :to="menuItemPersonal.rota">
             <q-item-section avatar>
               <q-icon :color="menuItemPersonal.iconColor" :name="menuItemPersonal.icon" />
             </q-item-section>
-            <q-item-section class="">
+            <q-item-section  class="">
               {{ menuItemPersonal.label }}
             </q-item-section>
           </q-item>
@@ -88,7 +88,10 @@
 
 <script>
 
+
 import { ref } from 'vue'
+import { RouterView } from 'vue-router'
+
 
 const colors = ['primary', 'secondary', 'accent', 'dark', 'positive', 'negative', 'info', 'warning']
 
@@ -97,7 +100,11 @@ const menuListPersonal = [
     icon: 'fa-solid fa-user',
     label: 'ENTRAR',
     iconColor: 'orange-5',
-    separator: false
+    separator: false,
+    rota: '/login'
+
+     
+    
   },
   {
     icon: 'fa-solid fa-solid fa-heart',
@@ -147,7 +154,8 @@ export default {
     return {
       cor: '',
       leftDrawerOpen: ref(false),
-      colorsLoop: null
+      colorsLoop: null,
+      rotaLogin: () => {this.$router.push("/login")} 
     }
   },
   setup() {
@@ -183,7 +191,6 @@ export default {
 
 
     },
-
     toggleLeftDrawer() {
 
       this.leftDrawerOpen = !this.leftDrawerOpen
@@ -191,6 +198,7 @@ export default {
 
 
     }
+  
   }
 
 }
