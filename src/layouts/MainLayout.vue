@@ -35,7 +35,7 @@
 
 
       <q-tabs inline-label class="bg-orange-5 glossy desktop-only" align="left">
-        <q-route-tab to="/page1" label="Todas as categorias" />
+        <q-route-tab to="/todas-categorias" label="Todas as categorias" />
         <q-route-tab to="/page2" label="Revistas" />
         <q-route-tab to="/page3" label="Mangás" />
         <q-route-tab to="/page3" label="HQS" />
@@ -63,7 +63,7 @@
         </template>
 
         <template v-for="(menuItemSite, index) in menuListSite" :key="index">
-          <q-item clickable v-ripple class="glossy text-white bg-orange-5 text-uppercase ">
+          <q-item clickable v-ripple class="glossy text-white bg-orange-5 text-uppercase " :to="menuItemSite.rota">
             <q-item-section avatar>
               <q-icon :color="menuItemSite.iconColor" :name="menuItemSite.icon" />
             </q-item-section>
@@ -126,7 +126,8 @@ const menuListSite = [
     label: 'Todas as categorias',
     iconColor: 'white',
     textColor: 'white',
-    separator: false
+    separator: false,
+    rota: '/todas-categorias'
   },
   {
     icon: 'fas fa-book-open',

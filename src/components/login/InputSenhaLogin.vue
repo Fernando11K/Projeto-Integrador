@@ -1,6 +1,6 @@
 <template>
-    <div class="q-pa-md bg-orange-4 glossy">
-        <div class="q-gutter-md ">
+    <div class=" q-pa-md bg-orange-4 glossy">
+        <div class=" ">
             <q-input dense bg-color="white" class="shadow-24 " color="primary" v-model="password" :type="isPwd ? 'password' : 'text'"
                 label="Senha" outlined>
                 <template v-slot:append>

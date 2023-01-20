@@ -1,6 +1,6 @@
 <template>
-     <q-page class="  q-pa-sm bg-primary window-height window-width row justify-center items-center glo">
-    <div class=" shadow-24 login glossy bg-amber-7   ">
+     <q-page class=" bg-primary  window-width row justify-center items-center  ">
+    <div class=" q-ma-sm  shadow-24 login glossy bg-amber-7   ">
         <q-card style="max-width: 350px;" class=" bg-orange-5 fit glossy  ">
             <div class="text-center q-pt-sm  animate__heartBeat ">
                 <q-icon size="70px" class="" name="fa-solid fa-user" />
