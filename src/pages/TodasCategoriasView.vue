@@ -17,16 +17,28 @@
 
 <script>
 
+import { Produto } from 'src/model/Produto';
 import CarouselComponent from '../components/commons/CarouselComponent.vue';
-
+import produtoService from '../service/produtoService.js'
 
 export default {
 
  components: { CarouselComponent },
   setup () {
     return {
-     
+      produto: new Produto()
     }
-  }
+  },
+  methods: {
+    getAll() { 
+      userService.list()
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.error(error); 
+      })
+    }
+  },
 }
 </script>

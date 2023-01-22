@@ -5,11 +5,12 @@
             <div class="text-center q-pt-sm  animate__heartBeat ">
                 <q-icon size="70px" class="" name="fa-solid fa-user" />
                 <div class=" text-bold text-h5 text-dark q-pt-sm ">Banca Cambauba</div>
+              <p>{{ this.email }}</p>  
             </div>
-            <q-card-section class="row justify-center   ">
-                <InputUsuarioLogin class="full-width " />
-                <InputSenhaLogin class="full-width" />
-                <q-btn class="q-mt-md glossy animate__heartBeat" color="dark" label="ENTRAR" />
+            <q-card-section class="row justify-center  ">
+                <InputUsuarioLogin  v-model="email" class="full-width " />
+                <InputSenhaLogin v-model="senha" class="full-width" />
+                <q-btn class="q-mt-md glossy animate__heartBeat" color="dark" label="ENTRAR" @click="login()" />
             </q-card-section>
         </q-card>
      
@@ -29,10 +30,16 @@ export default {
     data() {
         return {
 
-
+            email: '',
+            senha: ''
 
         }
-    }
+    },
+    methods: {
+        login() { 
+            
+        }
+    },
 }
 </script>
 

@@ -1,9 +1,9 @@
 export class Produto { 
     constructor(
-        idProduto = String,
+        idProduto = Number,
         nome = String,
         categoria = String,
-        quantidade = String,
+        quantidade = Number,
         foto = String,
         ativo = Number
 
@@ -13,6 +13,7 @@ export class Produto {
         this.nome = nome;
         this.categoria = categoria;
         this.quantidade = quantidade;
+        this.foto = foto
         this.ativo = ativo;
 
     }

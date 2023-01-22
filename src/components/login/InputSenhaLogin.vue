@@ -1,12 +1,20 @@
 <template>
     <div class=" q-pa-md bg-orange-4 glossy">
         <div class=" ">
-            <q-input dense bg-color="white" class="shadow-24 " color="primary" v-model="password" :type="isPwd ? 'password' : 'text'"
+            <q-input 
+                dense 
+                bg-color="white" 
+                class="shadow-24 " 
+                color="primary" 
+                :modelValue='modelValue'
+                @update:modelValue='atualiza'
+                :type="isPwd ? 'password' : 'text'"
                 label="Senha" outlined>
                 <template v-slot:append>
                     <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer"
                         @click="isPwd = !isPwd" />
                 </template>
+                
             </q-input>
         </div>
     </div>
@@ -15,16 +23,24 @@
 
 <script>
 
-
+import { ref } from 'vue'
 export default {
-    data() {
+    emits: ['update:modelValue'],
+    props: ['modelValue'],
+    data () {
         return {
-            password: '',
-            isPwd: true,
+            
+            isPwd: ref(true)
 
 
         }
-    }
+    },
+    methods: {
+        atualiza(value) { 
+            this.$emit('update:modelValue', value)
+            
+        }
+    },
 }
 </script>
 
