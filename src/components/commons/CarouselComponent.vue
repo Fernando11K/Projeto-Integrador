@@ -22,6 +22,16 @@
               
                 </div>
             </q-carousel-slide>
+            <q-carousel-slide :name="2" class="column no-wrap 	 ">
+                <div class="row fit justify-start items-center q-gutter-xs  q-col-gutter no-wrap">
+                <CardProduto :nome="'HariMiya'" :link="'/src/assets/img/produto/manga/Horimiya.jpeg'" class="  col-xs-12 col-md-3 "  />
+                 <CardProduto :nome="'Turma da mônica'" :link="'/src/assets/img/produto/revista/turma-monica-garfield.jpeg'" class="  col-xs-12 col-md-3 "  />
+                <CardProduto :nome="'HariMiya'" :link="'/src/assets/img/produto/manga/Horimiya.jpeg'" class="  col-xs-12 col-md-3 "  />
+                <CardProduto :nome="'Turma da mônica'" :link="'/src/assets/img/produto/revista/turma-monica-garfield.jpeg'" class="  col-xs-12 col-md-3 "  />
+                
+              
+                </div>
+            </q-carousel-slide>
          
             </q-carousel>
         </div>

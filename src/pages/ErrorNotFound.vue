@@ -1,12 +1,12 @@
 <template>
-  <div class="fullscreen bg-blue text-white text-center q-pa-md flex flex-center">
-    <div>
-      <div style="font-size: 30vh">
+  <div class="fullscreen bg-blue  text-center q-pa-md flex flex-center">
+    <div  >
+      <div :class="this.color" style="font-size: 30vh">
         404
       </div>
 
-      <div class="text-h2" style="opacity:.4">
-        Oops. Nothing here...
+      <div class="text-h2" >
+        <p :class="this.color">Oops. Ocorreu um erro ...</p>
       </div>
 
       <q-btn
@@ -15,7 +15,7 @@
         text-color="blue"
         unelevated
         to="/"
-        label="Go Home"
+        label="Página Inicial"
         no-caps
       />
     </div>
@@ -24,8 +24,31 @@
 
 <script>
 import { defineComponent } from 'vue'
+const colors = ['text-primary', 'text-secondary', 'text-accent',
+  'text-dark', 'text-positive', 'text-negative','text-info', 'text-warning']
+export default {
+  name: 'ErrorNotFound',
 
-export default defineComponent({
-  name: 'ErrorNotFound'
-})
+  created() {
+    this.loopColors()
+  },
+  data() {
+    return {
+       color: '',
+    }
+  },
+  methods: {
+    loopColors() {
+      this.colorsLoop = setInterval(() => {
+        this.color = colors[Math.floor((Math.random() * colors.length))]
+
+        console.log(this.color)
+      }, 500)
+    },
+  }
+}
 </script>
+
+<style scoped>
+
+</style>

@@ -1,9 +1,11 @@
-import { Usuario } from '@/model/Usuario.js';
+import { Usuario } from '/src/model/Usuario.js';
+
+import { api } from 'src/boot/axios';
 
 export default {
 
     login: function (usuario = new Usuario) {
-        return http.post("usuario/logon", usuario);
+        return api.post("http://localhost:8000/api/auth", usuario);
     }
 
 
