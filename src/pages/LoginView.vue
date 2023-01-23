@@ -22,7 +22,7 @@
                
 
                 <q-card-actions align="center" >
-                <q-icon color="amber" name="fa-solid fa-triangle-exclamation text" size="3vw" />
+                <q-icon color="amber" name="fa-solid fa-triangle-exclamation text" size="25px" />
                     <span class=" q-pl-lg  text-weight-medium text-amber">Email ou senha incorretos! </span>
                 
                     <q-btn  class="" rounded flat label="OK" text-color="primary" v-close-popup />
@@ -62,13 +62,16 @@ export default {
             this.loading = true
             usuarioService.login(this.usuario)
                 .then(response => {
-              
-                    this.$router.push("/todas-categorias")
-                       
+                    (response.data.type != 'INFORMATION') ?
+                        this.$router.push("/todas-categorias") : this.alert = true;
+                    
+                   
                 })
                 .catch(err => {
                     console.error(err); 
-                    this.alert = true;
+                   
+                  
+                    
 
                 })
                 .finally(() => {

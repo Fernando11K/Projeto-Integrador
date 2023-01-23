@@ -110,13 +110,15 @@ const menuListPersonal = [
     icon: 'fa-solid fa-solid fa-heart',
     label: 'FAVORITOS',
     iconColor: 'orange-5',
-    separator: false
+    separator: false,
+    rota: '/favoritos'
   },
   {
     icon: 'fa-solid fa-bag-shopping',
     label: 'SACOLA',
     iconColor: 'orange-5',
-    separator: true
+    separator: true,
+    rota: '/sacola'
   }
 
 ]

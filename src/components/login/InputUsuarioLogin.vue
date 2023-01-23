@@ -30,7 +30,7 @@ export default {
     methods: {
         atualiza(value) { 
             this.$emit('update:modelValue', value)
-            console.log('atualizou')
+          
         }
     },
    

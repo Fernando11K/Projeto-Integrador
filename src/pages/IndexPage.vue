@@ -1,17 +1,27 @@
 <template>
   <q-page class="flex flex-center">
-    <!-- <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    > -->
+  <div class="q-pa-md row justify-center">
+    <div style="width: 100%; max-width: 400px">
+      <q-chat-message
+        :text="['Vamo terminar logo esse site?']"
+        sent
+         bg-color="amber-7"
+      />
+    </div>
+  </div>
   </q-page>
 </template>
 
 <script>
+
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'IndexPage'
+  name: 'IndexPage',
+
+  created() {
+  
+  },
+  
 })
 </script>
