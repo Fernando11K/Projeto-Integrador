@@ -2,6 +2,7 @@
     <div class=" q-pa-md bg-orange-4 glossy">
         <div class=" ">
             <q-input 
+                standout="bg-black text-amber"
                 dense 
                 bg-color="white" 
                 class="shadow-24 " 
@@ -9,12 +10,15 @@
                 :modelValue='modelValue'
                 @update:modelValue='atualiza'
                 :type="isPwd ? 'password' : 'text'"
-                label="Senha" outlined>
+                label="Senha" >
                 <template v-slot:append>
                     <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer"
                         @click="isPwd = !isPwd" />
                 </template>
-                
+                  <template v-slot:prepend>
+                    <q-icon  name="fa-solid fa-key"
+                     />
+                </template>
             </q-input>
         </div>
     </div>

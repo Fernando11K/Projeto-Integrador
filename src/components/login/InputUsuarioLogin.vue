@@ -3,13 +3,22 @@
         <div class="q-gutter-md  ">
 
             <q-input 
+            
             dense 
-            outlined 
+           standout="bg-black text-amber"
             bg-color='white' 
             :modelValue='modelValue'
              @update:modelValue='atualiza'
             type='email' 
-            label='Usuário' />
+            label='Usuário'>
+          <template v-slot:prepend>
+                    <q-icon  name="fa-solid fa-user"
+                     />
+                </template>
+        
+        
+        </q-input>
+            
             
         </div>
     </div>

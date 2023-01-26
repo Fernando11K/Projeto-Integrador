@@ -42,7 +42,7 @@ export default {
       this.colorsLoop = setInterval(() => {
         this.color = colors[Math.floor((Math.random() * colors.length))]
 
-        console.log(this.color)
+     
       }, 500)
     },
   }
