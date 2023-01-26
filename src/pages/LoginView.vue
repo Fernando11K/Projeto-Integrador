@@ -21,11 +21,11 @@
             <q-card class=" bg-red-14  q-pa-sm ">
                
 
-                <q-card-actions align="center" >
-                <q-icon color="amber" name="fa-solid fa-triangle-exclamation text" size="25px" />
-                    <span class=" q-pl-lg  text-weight-medium text-amber">Email ou senha incorretos! </span>
+                <q-card-actions  class="glossy shadow-24	 " align="center" >
+                <q-icon class="shadow-24" color="amber" name="fa-solid fa-triangle-exclamation text" size="25px" />
+                    <span class=" q-pl-lg  text-weight-medium text-amber ">Email ou senha incorretos! </span>
                 
-                    <q-btn  class="" rounded flat label="OK" text-color="primary" v-close-popup />
+                    <q-btn  class=" q-ml-sm glossy" dense  color = 'dark' rounded  label="OK" text-color="white" v-close-popup />
                 </q-card-actions>
             </q-card>
             </q-dialog>
