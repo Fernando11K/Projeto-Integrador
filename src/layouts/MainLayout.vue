@@ -21,7 +21,7 @@
 
         <q-tabs inline-label class="desktop-only col-md-5 col-xs-12 ">
           <q-route-tab class="text-orange-5  " icon="fa-solid fa-user" to="/login" label="ENTRAR" />
-          <q-route-tab class="text-orange-5 " icon="fa-solid fa-bag-shopping" to="/page3" label="SACOLA" />
+          <q-route-tab class="text-orange-5 " icon="fa-solid fa-bag-shopping" to="/sacola" label="SACOLA" />
           <q-route-tab class="text-orange-5  " icon="fa-solid fa-solid fa-heart" to="/page1" label="FAVORITOS" />
         </q-tabs>
 
