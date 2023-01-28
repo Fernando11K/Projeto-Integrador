@@ -21,7 +21,7 @@
             <q-card class=" bg-red-14  q-pa-sm ">
                
 
-                <q-card-actions  class="glossy shadow-24	 " align="center" >
+                <q-card-actions  class="glossy shadow-24 " align="center" >
                 <q-icon class="shadow-24" color="amber" name="fa-solid fa-triangle-exclamation text" size="25px" />
                     <span class=" q-pl-lg  text-weight-medium text-amber ">Email ou senha incorretos! </span>
                 
