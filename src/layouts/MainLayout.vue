@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHr LpR lFr">
 
-    <q-header elevated class="bg-dark text-white glossy  " height-hint="98">
+    <q-header  elevated class="bg-dark text-white glossy  " height-hint="98">
 
       <q-toolbar id="toolvar" class="row justify-between   ">
 
@@ -19,12 +19,14 @@
         </q-toolbar-title>
 
 
-        <q-tabs inline-label class="desktop-only col-md-5 col-xs-12 ">
-          <q-route-tab class="text-orange-5  " icon="fa-solid fa-user" to="/login" label="ENTRAR" />
+        <q-tabs inline-label class="desktop-only col-xs-12" :class="{ 'col-md-5': !this.usuario, 'col-md-6': this.usuario }">
+          <q-route-tab class="text-orange-5  " icon="fa-solid fa-user" to="/login" :label="!this.usuario ? 'ENTRAR' :   this.usuario.nome " />
           <q-route-tab class="text-orange-5 " icon="fa-solid fa-bag-shopping" to="/sacola" label="SACOLA" />
           <q-route-tab class="text-orange-5  " icon="fa-solid fa-solid fa-heart" to="/page1" label="FAVORITOS" />
+          <q-route-tab @click="ByeUsuario()" v-show="this.usuario" class="text-orange-5  " icon="fa-solid fa-person-walking-arrow-right" to="/page1" label="SAIR" />
+  
         </q-tabs>
-
+        
         <q-btn class="mobile-only fixed-top-left q-my-sm  q-ml-sm " dense flat round icon="menu"
           @click="this.toggleLeftDrawer()" />
 
@@ -32,7 +34,7 @@
 
 
       </q-toolbar>
-
+    
 
       <q-tabs inline-label class="bg-orange-5 glossy desktop-only" align="left">
         <q-route-tab to="/todas-categorias" label="Todas as categorias" />
@@ -90,7 +92,6 @@
 
 
 import { ref } from 'vue'
-import { RouterView } from 'vue-router'
 
 
 const colors = ['primary', 'secondary', 'accent', 'dark', 'positive', 'negative', 'info', 'warning']
@@ -149,16 +150,18 @@ const menuListSite = [
 ]
 
 export default {
+   props: [],
 
   created() {
-
+  
   },
   data() {
     return {
       cor: '',
       leftDrawerOpen: ref(false),
       colorsLoop: null,
-      rotaLogin: () => {this.$router.push("/login")} 
+      usuario: null
+     
     }
   },
   setup() {
@@ -172,7 +175,15 @@ export default {
 
   },
   watch: {
-
+    '$route'(to, from) {
+      console.log('agora', to.fullPath)
+      console.log('depois', from.fullPath)
+      if (to.fullPath === '/') {
+        this.getUsuario()
+        console.log('executou dentro do if')
+      }
+     
+  },
     leftDrawerOpen(newValue, oldValue) {
 
       if (newValue) {
@@ -185,6 +196,14 @@ export default {
     }
   },
   methods: {
+    getUsuario() { 
+      let cliente = JSON.parse(sessionStorage.getItem("usuario")) 
+      this.usuario = cliente ? cliente : null
+      return this.usuario?.nome
+    },
+    ByeUsuario() { 
+       sessionStorage.clear();
+    },
     loopColors() {
       this.colorsLoop = setInterval(() => {
         this.cor = colors[Math.floor((Math.random() * colors.length))]

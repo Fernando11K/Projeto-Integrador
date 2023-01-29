@@ -3,13 +3,13 @@
         <div class="q-gutter-md  ">
 
             <q-input 
-            
+            for="email"
             dense 
            standout="bg-black text-amber"
             bg-color='white' 
             :modelValue='modelValue'
              @update:modelValue='atualiza'
-            type='email' 
+            type='text' 
             label='Usuário'>
           <template v-slot:prepend>
                     <q-icon  name="fa-solid fa-user"

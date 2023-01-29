@@ -1,4 +1,5 @@
 <template>
+   
      <q-page class=" bg-primary  window-width row justify-center items-center  ">
     <div class=" q-ma-sm  shadow-24 login glossy bg-amber-7   ">
         <q-card style="max-width: 350px;" class=" bg-orange-5 fit glossy  ">
@@ -29,6 +30,7 @@
                 </q-card-actions>
             </q-card>
             </q-dialog>
+           
 </template>
 
 <script>
@@ -38,10 +40,9 @@ import InputSenhaLogin from 'src/components/login/InputSenhaLogin.vue';
 import 'animate.css';
 import usuarioService from 'src/service/usuarioService';
 
-
-
 export default {
     components: { InputUsuarioLogin, InputSenhaLogin },
+    emits:['dadosUsuario'],
     created() { 
      
     },
@@ -62,17 +63,19 @@ export default {
             this.loading = true
             usuarioService.login(this.usuario)
                 .then(response => {
-                    (response.data.type != 'INFORMATION') ?
-                        this.$router.push("/todas-categorias") : this.alert = true;
+
+                    if  (response.data.type != 'INFORMATION') {
+                        this.$router.push("/")
+                        sessionStorage.setItem("usuario", JSON.stringify(response.data.usuario))
+                    }
+                    else {
+
+                     this.alert = true;
+                    }
                     
-                   
                 })
                 .catch(err => {
                     console.error(err); 
-                   
-                  
-                    
-
                 })
                 .finally(() => {
                     this.loading = false
