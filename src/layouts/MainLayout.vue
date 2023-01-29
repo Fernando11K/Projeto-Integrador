@@ -30,9 +30,6 @@
         <q-btn class="mobile-only fixed-top-left q-my-sm  q-ml-sm " dense flat round icon="menu"
           @click="this.toggleLeftDrawer()" />
 
-
-
-
       </q-toolbar>
     
 
@@ -53,7 +50,7 @@
 
         <template v-for="(menuItemPersonal, index) in menuListPersonal" :key="index">
           <q-item clickable v-ripple class="glossy text-white " :to="menuItemPersonal.rota">
-            <q-item-section avatar @click="this.ByeUsuario()">
+            <q-item-section avatar >
               <q-icon :color="menuItemPersonal.iconColor" :name="menuItemPersonal.icon" />
             </q-item-section>
             <q-item-section   class="">
@@ -174,10 +171,8 @@ export default {
   },
   watch: {
     '$route'(to, from) {
-      if (to.fullPath === '/' || to.fullPath === '/login') {
         this.getUsuario()
-        console.log('executou dentro do if')
-      }
+      
      
   },
     leftDrawerOpen(newValue, oldValue) {
@@ -195,6 +190,7 @@ export default {
     getUsuario() { 
       let cliente = JSON.parse(sessionStorage.getItem("usuario")) 
       this.usuario = cliente ? cliente : null
+      console.log('executou dentro do if')
       return this.usuario?.nome
     },
     ByeUsuario() { 
@@ -206,7 +202,7 @@ export default {
       this.colorsLoop = setInterval(() => {
         this.cor = colors[Math.floor((Math.random() * colors.length))]
 
-        console.log(this.cor)
+     
       }, 500)
 
 
