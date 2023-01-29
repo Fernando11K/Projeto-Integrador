@@ -53,14 +53,14 @@
 
         <template v-for="(menuItemPersonal, index) in menuListPersonal" :key="index">
           <q-item clickable v-ripple class="glossy text-white " :to="menuItemPersonal.rota">
-            <q-item-section avatar>
+            <q-item-section avatar @click="this.ByeUsuario()">
               <q-icon :color="menuItemPersonal.iconColor" :name="menuItemPersonal.icon" />
             </q-item-section>
             <q-item-section   class="">
               {{ menuItemPersonal.label === 'ENTRAR' && this.usuario   ? this.usuario.nome.toUpperCase() : menuItemPersonal.label}}
             </q-item-section>
           </q-item>
-          <q-separator dark teal :color="this.cor" size="2px" class="" :key="'sep' + index"
+          <q-separator dark teal :color="this.cor" size="2px" class="" :key="index"
             v-if="menuItemPersonal.separator" />
         </template>
 
@@ -96,7 +96,22 @@ import { ref } from 'vue'
 
 const colors = ['primary', 'secondary', 'accent', 'dark', 'positive', 'negative', 'info', 'warning']
 
-const menuListPersonal = [
+
+
+
+export default {
+   props: [],
+
+  created() {
+    this.getUsuario()
+  },
+  data() {
+    return {
+      cor: '',
+      leftDrawerOpen: ref(false),
+      colorsLoop: null,
+      usuario: null,
+      menuListPersonal : [
   {
     icon: 'fa-solid fa-user',
     label: 'ENTRAR',
@@ -127,8 +142,8 @@ const menuListPersonal = [
     rota: '/login'
   }
 
-]
-const menuListSite = [
+],
+ menuListSite : [
   {
     icon: 'category',
     label: 'Todas as categorias',
@@ -154,36 +169,11 @@ const menuListSite = [
   }
  
 ]
-
-export default {
-   props: [],
-
-  created() {
-    this.getUsuario()
-  },
-  data() {
-    return {
-      cor: '',
-      leftDrawerOpen: ref(false),
-      colorsLoop: null,
-      usuario: null
      
     }
   },
-  setup() {
-
-    return {
-
-      menuListPersonal,
-      menuListSite
-
-    }
-
-  },
   watch: {
     '$route'(to, from) {
-      console.log('agora', to.fullPath)
-      console.log('depois', from.fullPath)
       if (to.fullPath === '/' || to.fullPath === '/login') {
         this.getUsuario()
         console.log('executou dentro do if')
@@ -209,6 +199,7 @@ export default {
     },
     ByeUsuario() { 
       sessionStorage.clear();
+     
      
     },
     loopColors() {

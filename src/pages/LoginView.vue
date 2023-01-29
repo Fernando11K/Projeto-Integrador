@@ -42,7 +42,7 @@ import usuarioService from 'src/service/usuarioService';
 
 export default {
     components: { InputUsuarioLogin, InputSenhaLogin },
-    emits:['dadosUsuario'],
+    emits:[],
     created() { 
       sessionStorage.clear();
     },
