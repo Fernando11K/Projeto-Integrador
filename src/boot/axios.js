@@ -4,7 +4,8 @@ import axios from 'axios'
 export const configure = {
     // local: location.origin.replace(location.port, 8000),
     // local: location.origin.replace(location.port, "") + "/api/"
-    local: "http://localhost:8000/api/" //Desenvolvimento
+    // local: "http://localhost:8000/api/" //Desenvolvimento
+    local: "http://192.168.0.242:8000/api/" //Desenvolvimento
 };
 
 // Be careful when using SSR for cross-request state pollution

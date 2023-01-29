@@ -44,7 +44,7 @@ export default {
     components: { InputUsuarioLogin, InputSenhaLogin },
     emits:['dadosUsuario'],
     created() { 
-     
+      sessionStorage.clear();
     },
     data() {
         return {

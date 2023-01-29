@@ -23,7 +23,7 @@
           <q-route-tab class="text-orange-5  " icon="fa-solid fa-user" to="/login" :label="!this.usuario ? 'ENTRAR' :   this.usuario.nome " />
           <q-route-tab class="text-orange-5 " icon="fa-solid fa-bag-shopping" to="/sacola" label="SACOLA" />
           <q-route-tab class="text-orange-5  " icon="fa-solid fa-solid fa-heart" to="/page1" label="FAVORITOS" />
-          <q-route-tab @click="ByeUsuario()" v-show="this.usuario" class="text-orange-5  " icon="fa-solid fa-person-walking-arrow-right" to="/page1" label="SAIR" />
+          <q-route-tab @click="ByeUsuario()" v-show="this.usuario" class="text-orange-5  " icon="fa-solid fa-person-walking-arrow-right" to="/login" label="SAIR" />
   
         </q-tabs>
         
@@ -56,8 +56,8 @@
             <q-item-section avatar>
               <q-icon :color="menuItemPersonal.iconColor" :name="menuItemPersonal.icon" />
             </q-item-section>
-            <q-item-section  class="">
-              {{ menuItemPersonal.label }}
+            <q-item-section   class="">
+              {{ menuItemPersonal.label === 'ENTRAR' && this.usuario   ? this.usuario.nome.toUpperCase() : menuItemPersonal.label}}
             </q-item-section>
           </q-item>
           <q-separator dark teal :color="this.cor" size="2px" class="" :key="'sep' + index"
@@ -103,9 +103,7 @@ const menuListPersonal = [
     iconColor: 'orange-5',
     separator: false,
     rota: '/login'
-
-     
-    
+ 
   },
   {
     icon: 'fa-solid fa-solid fa-heart',
@@ -120,6 +118,13 @@ const menuListPersonal = [
     iconColor: 'orange-5',
     separator: true,
     rota: '/sacola'
+  },
+  {
+    icon: 'fa-solid fa-person-walking-arrow-right',
+    label: 'SAIR',
+    iconColor: 'orange-5',
+    separator: true,
+    rota: '/login'
   }
 
 ]
@@ -147,13 +152,14 @@ const menuListSite = [
     label: 'HQS',
     separator: false
   }
+ 
 ]
 
 export default {
    props: [],
 
   created() {
-  
+    this.getUsuario()
   },
   data() {
     return {
@@ -178,7 +184,7 @@ export default {
     '$route'(to, from) {
       console.log('agora', to.fullPath)
       console.log('depois', from.fullPath)
-      if (to.fullPath === '/') {
+      if (to.fullPath === '/' || to.fullPath === '/login') {
         this.getUsuario()
         console.log('executou dentro do if')
       }
@@ -202,7 +208,8 @@ export default {
       return this.usuario?.nome
     },
     ByeUsuario() { 
-       sessionStorage.clear();
+      sessionStorage.clear();
+     
     },
     loopColors() {
       this.colorsLoop = setInterval(() => {

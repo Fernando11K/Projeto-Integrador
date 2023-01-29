@@ -4,7 +4,7 @@
     <div style="width: 100%; max-width: 400px">
       <q-chat-message v-show="bemVindo" 
         name="Banca Cambauba"
-        :text="['Olá, bem vindo!']"
+        :text="['Olá,' + this.usuario?.nome +' Bem vindo!']"
          avatar="/src/assets/img/produto/hqs/Batman_gothan_knights_cidade_dourada.jpeg"
         stamp="agora mesmo"
          bg-color="amber"
@@ -42,6 +42,7 @@ export default defineComponent({
   name: 'IndexPage',
 
   created() {
+    this.getUsuario()
     setTimeout(() => {
       this.bemVindo = true
     }, 1000);
@@ -55,9 +56,16 @@ export default defineComponent({
     return {
       bemVindo: false,
       navegue: false,
-      loading: true
+      loading: true,
+      usuario: { nome: ''}
      
     }
-  }
+  },
+  methods: {
+     getUsuario() { 
+      let cliente = JSON.parse(sessionStorage.getItem("usuario")) 
+      this.usuario.nome = cliente ? ' ' +cliente.nome + '.' : ''
+    },
+  },
 })
 </script>
