@@ -25,7 +25,7 @@
       </q-card-section>
           
           <q-card-actions class="q-pt-sm ">
-            <q-btn unelevated size="lg" color="orange" class="full-width text-white" label="Confirmar Rerserva" />
+            <q-btn unelevated size="lg" color="orange" class="full-width text-white" label="Confirmar Reserva" />
           </q-card-actions>
         </q-card>
      </section>
