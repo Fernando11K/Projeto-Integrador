@@ -8,4 +8,4 @@ git add .
 git commit -m "$message"
 
 # Enviar as alterações para o repositório remoto
-git push origin master
+git push origin desenvolvimento
