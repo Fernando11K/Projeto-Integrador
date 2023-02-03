@@ -90,7 +90,7 @@
 import { ref } from 'vue'
 
 
-const colors = ['primary', 'secondary', 'accent', 'dark', 'positive', 'negative', 'info', 'warning']
+const colors = ['primary', 'secondary', 'accent', 'dark', 'positive', 'negative', 'info', 'warning','light']
 
 
 
