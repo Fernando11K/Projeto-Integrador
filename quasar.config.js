@@ -89,7 +89,7 @@ module.exports = configure(function (/* ctx */) {
     devServer: {
       // https: true,
       open: true, // opens browser window automatically
-      port: 443
+      port: 80
       
     },
 

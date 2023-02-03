@@ -35,9 +35,9 @@
 
       <q-tabs inline-label class="bg-orange-5 glossy desktop-only" align="left">
         <q-route-tab to="/todas-categorias" label="Todas as categorias" />
-        <q-route-tab to="/page2" label="Revistas" />
-        <q-route-tab to="/page3" label="Mangás" />
-        <q-route-tab to="/page3" label="HQS" />
+        <q-route-tab to="/revistas" label="Revistas" />
+        <q-route-tab to="/mangas" label="Mangás" />
+        <q-route-tab to="/hqs" label="HQS" />
       </q-tabs>
 
 
@@ -80,6 +80,17 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+
+     <q-footer elevated class=" glossy bg-dark text-white">
+            <q-toolbar>
+                <q-toolbar-title class="desktop-only text-center text-subtitle1 ">
+                    Rua Cambaúba, 1051 - Jardim Guanabara, Rio de Janeiro - RJ, 21940-005 
+                </q-toolbar-title>
+                <q-toolbar-title class="mobile-only text-center text-caption ">
+                    Rua Cambaúba, 1051 - Jardim Guanabara, Rio de Janeiro - RJ, 21940-005 
+                </q-toolbar-title>
+            </q-toolbar>
+        </q-footer>
 
   </q-layout>
 </template>
