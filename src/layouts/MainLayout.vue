@@ -20,7 +20,7 @@
 
 
         <q-tabs inline-label class="desktop-only col-xs-12" :class="{ 'col-md-5': !this.usuario, 'col-md-6': this.usuario }">
-          <q-route-tab class="text-orange-5  " icon="fa-solid fa-user" to="/login" :label="!this.usuario ? 'ENTRAR' :   this.usuario.nome " />
+          <q-route-tab class="text-orange-5  " icon="fa-solid fa-user" :to="!this.usuario ? '/login':''" :label="!this.usuario ? 'ENTRAR' :   this.usuario.nome " />
           <q-route-tab class="text-orange-5 " icon="fa-solid fa-bag-shopping" to="/sacola" label="SACOLA" />
           <q-route-tab class="text-orange-5  " icon="fa-solid fa-solid fa-heart" to="/page1" label="FAVORITOS" />
           <q-route-tab @click="ByeUsuario()" v-show="this.usuario" class="text-orange-5  " icon="fa-solid fa-person-walking-arrow-right" to="/login" label="SAIR" />
@@ -48,19 +48,18 @@
 
       <q-list bordered class=" q-pa-none    ">
 
-        <template v-for="(menuItemPersonal, index) in menuListPersonal" :key="index">
-          <q-item clickable v-ripple class="glossy text-white " :to="menuItemPersonal.rota">
+        <template v-for="(menuItemPersonal, index) in menuListPersonal" :key="index" >
+          <q-item v-if="menuItemPersonal.ativo" clickable v-ripple class="glossy text-white " :to="menuItemPersonal.rota">
             <q-item-section avatar >
               <q-icon :color="menuItemPersonal.iconColor" :name="menuItemPersonal.icon" />
             </q-item-section>
-            <q-item-section   class="">
-              {{ menuItemPersonal.label === 'ENTRAR' && this.usuario   ? this.usuario.nome.toUpperCase() : menuItemPersonal.label}}
+            <q-item-section @click="ByeUsuario()">
+              {{ menuItemPersonal.label === 'ENTRAR' && this.usuario ? this.usuario.nome.toUpperCase() : menuItemPersonal.label}}
             </q-item-section>
           </q-item>
           <q-separator dark teal :color="this.cor" size="2px" class="" :key="index"
             v-if="menuItemPersonal.separator" />
         </template>
-
         <template v-for="(menuItemSite, index) in menuListSite" :key="index">
           <q-item clickable v-ripple class="glossy text-white bg-orange-5 text-uppercase " :to="menuItemSite.rota">
             <q-item-section avatar>
@@ -101,6 +100,7 @@ export default {
 
   created() {
     this.getUsuario()
+    
   },
   data() {
     return {
@@ -114,7 +114,8 @@ export default {
     label: 'ENTRAR',
     iconColor: 'orange-5',
     separator: false,
-    rota: '/login'
+    rota: '/login',
+    ativo: true
  
   },
   {
@@ -122,21 +123,24 @@ export default {
     label: 'FAVORITOS',
     iconColor: 'orange-5',
     separator: false,
-    rota: '/favoritos'
+    rota: '/favoritos',
+    ativo: true
   },
   {
     icon: 'fa-solid fa-bag-shopping',
     label: 'SACOLA',
     iconColor: 'orange-5',
     separator: true,
-    rota: '/sacola'
+    rota: '/sacola',
+    ativo: true
   },
   {
     icon: 'fa-solid fa-person-walking-arrow-right',
     label: 'SAIR',
     iconColor: 'orange-5',
     separator: true,
-    rota: '/login'
+    rota: '/login',
+    ativo: false
   }
 
 ],
@@ -188,14 +192,14 @@ export default {
   },
   methods: {
     getUsuario() { 
-      let cliente = JSON.parse(sessionStorage.getItem("usuario")) 
+      let cliente = JSON.parse(localStorage.getItem("usuario")) 
+      cliente ? this.menuListPersonal[3].ativo = true : this.menuListPersonal[3].ativo = false
       this.usuario = cliente ? cliente : null
-      console.log('executou dentro do if')
       return this.usuario?.nome
     },
     ByeUsuario() { 
-      sessionStorage.clear();
-     
+      localStorage.clear();
+      this.getUsuario()
      
     },
     loopColors() {
@@ -211,7 +215,6 @@ export default {
 
       this.leftDrawerOpen = !this.leftDrawerOpen
       this.loopColors()
-
 
     }
   
