@@ -63,7 +63,7 @@ export default defineComponent({
   },
   methods: {
      getUsuario() { 
-      let cliente = JSON.parse(sessionStorage.getItem("usuario")) 
+      let cliente = JSON.parse(localStorage.getItem("usuario")) 
       this.usuario.nome = cliente ? ' ' +cliente.nome + '.' : ''
     },
   },

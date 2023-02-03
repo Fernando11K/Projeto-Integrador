@@ -44,7 +44,7 @@ export default {
     components: { InputUsuarioLogin, InputSenhaLogin },
     emits:[],
     created() { 
-      sessionStorage.clear();
+     
     },
     data() {
         return {
@@ -66,7 +66,7 @@ export default {
 
                     if  (response.data.type != 'INFORMATION') {
                         this.$router.push("/")
-                        sessionStorage.setItem("usuario", JSON.stringify(response.data.usuario))
+                        localStorage.setItem("usuario", JSON.stringify(response.data.usuario))
                     }
                     else {
 
