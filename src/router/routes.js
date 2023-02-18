@@ -7,6 +7,9 @@ const routes = [
       { path: '', component: () => import('pages/IndexPage.vue') },
       { path: '/login', component: () => import('../pages/LoginView.vue') },
       { path: '/todas-categorias',  component: () => import('../pages/TodasCategoriasView.vue')},
+      { path: '/revistas',  component: () => import('../pages/TodasCategoriasView.vue')},
+      { path: '/mangas',  component: () => import('../pages/TodasCategoriasView.vue')},
+      { path: '/hqs',  component: () => import('../pages/TodasCategoriasView.vue')},
       { path: '/sacola',  component: () => import('../pages/SacolaPage.vue')}
     ]
   },
