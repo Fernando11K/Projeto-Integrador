@@ -110,7 +110,7 @@ export default {
    props: [],
 
   created() {
-    this.getUsuario()
+    // this.getUsuario()
     
   },
   data() {
